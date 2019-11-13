@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const passport = require('passport')
 
 const app = express()
 const port = process.env.PORT || 8877
@@ -14,8 +15,18 @@ connection.once('open', () => {
 })
 
 
+//middlewares
 app.use(cors())
 app.use(express.json())
+
+//passport init
+app.use(passport.initialize())
+require('./config/passport')(passport)
+
+
+const router = require('./router')
+app.use(router)
+
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}.`)
