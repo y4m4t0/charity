@@ -105,8 +105,19 @@ const login = async (req, res) => {
         })
 }
 
+const subscribeForFund = async (req, res) => {
+    const user = await User.findOne({ _id: req.body.user._id })
+    if( user ){
+        user.subscriptions.push(req.body.fundName)
+        await user.save()
+        return res.status(200).json({ message: "Subscribed." })
+    }
+
+    return res.status(404),json({ message: "User not found" })
+}
 
 module.exports = {
     register,
-    login
+    login,
+    subscribeForFund
 }
