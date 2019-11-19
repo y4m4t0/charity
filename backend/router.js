@@ -3,6 +3,11 @@ const router = express.Router()
 
 const userController = require('./controllers/user')
 
-router.get('/api/register', )
+
+//authentication routes
+router.get('/api/register', userController.register)
+router.get('/api/login', userController.login)
+
+
 
 module.exports = router
