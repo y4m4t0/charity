@@ -16,6 +16,7 @@ router.post('/api/getSubscriptions', fundsController.getFundsSubsribes)
 // admin routes
 router.get('/api/getUsersList', adminController.shouldBeAdmin, adminController.getUsersList)
 router.get('/api/getFundsList', adminController.shouldBeAdmin, adminController.getFundsList)
+router.post('/api/deleteUser', adminController.shouldBeAdmin, adminController.deleteUser)
 
 
 module.exports = router
