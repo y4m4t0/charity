@@ -113,11 +113,20 @@ const subscribeForFund = async (req, res) => {
         return res.status(200).json({ message: "Subscribed." })
     }
 
-    return res.status(404),json({ message: "User not found" })
+    return res.status(404),json({ message: "User not found..." })
+}
+
+const getUserInfo = async (req, res) => {
+    const user = await User.findOne({ _id: req.body.user._id })
+    if( user )
+        return res.status(200).json(user)
+    
+    return res.status(404).json({ message: "User not found..." }) 
 }
 
 module.exports = {
     register,
     login,
-    subscribeForFund
+    subscribeForFund,
+    getUserInfo1
 }

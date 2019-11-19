@@ -17,7 +17,16 @@ const getFundsSubsribes = async (req, res) => {
     res.status(200).json({ message: "API is not completed yet..." })    
 }
 
+const getFundInfo = async (req, res) => {
+    const fund = await Fund.findOne({ _id: req.body.fund._id })
+    if(fund)
+        return res.status(200).json(fund)
+    
+    res.status(404)
+}
+
 module.exports = {
     getFunds,
-    getFundsSubsribes
+    getFundsSubsribes,
+    getFundInfo
 }

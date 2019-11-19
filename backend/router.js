@@ -22,5 +22,4 @@ router.post('/api/deleteFund', adminController.shoudlBeAdmin, adminController.de
 // user actions routes
 router.post('/api/subscribeForFund', userController.subscribeForFund)
 
-
 module.exports = router
