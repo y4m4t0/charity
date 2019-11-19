@@ -35,9 +35,36 @@ const deleteUser = async (req, res) => {
 	}
 }
 
+const deleteFund = async (req, res) => {
+    try{
+		const fund = await Fund.deleteOne({ _id })
+		return res.status(200).json({ message: `Fund with id ${fund.id} and name ${fund.name} was succesfully removed from the Database.`})
+	} catch ( err ) {
+		res.status(500).json({ err })
+	}
+}
+
+const updateEntity = async (req, res) => {
+    const entity = Fund.findOne({ _id })
+    
+    if(req.body.user)
+        entity = User.findOne({ _id })
+    
+        
+    if( entity ){
+        entity = req.body.newData
+        entity.save()
+        return res.status(200).json({ message: "Entity data was successfully updated." })
+    }
+
+    return res.status(404).json({ message: "Entity not found..." })
+}
+
 module.exports = {
     getUsersList,
     shouldBeAdmin,
-		getFundsList,
-		deleteUser
+    getFundsList,
+    deleteUser,
+    deleteFund,
+    updateEntity
 }

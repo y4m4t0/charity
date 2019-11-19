@@ -17,6 +17,6 @@ router.post('/api/getSubscriptions', fundsController.getFundsSubsribes)
 router.get('/api/getUsersList', adminController.shouldBeAdmin, adminController.getUsersList)
 router.get('/api/getFundsList', adminController.shouldBeAdmin, adminController.getFundsList)
 router.post('/api/deleteUser', adminController.shouldBeAdmin, adminController.deleteUser)
-
+router.post('/api/deleteFund', adminController.shoudlBeAdmin, adminController.deleteFund)
 
 module.exports = router
