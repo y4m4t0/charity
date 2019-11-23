@@ -27,6 +27,9 @@ require('./config/passport')(passport)
 const router = require('./router')
 app.use(router)
 
+app.get('/', (req, res) => {
+	console.log("Test API")
+})
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}.`)
