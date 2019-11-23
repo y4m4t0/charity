@@ -128,5 +128,5 @@ module.exports = {
     register,
     login,
     subscribeForFund,
-    getUserInfo1
+    getUserInfo
 }
