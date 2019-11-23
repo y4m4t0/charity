@@ -28,7 +28,7 @@ const router = require('./router')
 app.use(router)
 
 app.get('/', (req, res) => {
-	console.log("Test API")
+	res.send("Test API")
 })
 
 app.listen(port, () => {
